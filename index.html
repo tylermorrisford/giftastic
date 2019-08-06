@@ -29,6 +29,9 @@
         .siteName {
             padding-left: 20px;
         }
+        .btn {
+            margin-right: 10px;
+        }
     </style>
 </head>
 <body>
@@ -54,28 +57,53 @@
 
 
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script type="text/javascript">
-    
-    // variables
-    let fails = ["Falls", "Walls", "Spills", "Drops", "Trips"];
-    let apiKey = "4SHnrjgqAMzgL3bxI8ggs9uxSkOuCsUX";
 
-    // function with for loop creates buttons - can call after new button is pushed to the array
-    function makeButtons() {
-    $("#buttons").empty();
-    for (var i = 0; i < fails.length; i++) {
-    var g = $("<button type='button' class='btn btn-outline-info'>" + fails[i] + "</button>");
-    // Adds a data-attribute "fail"
-    g.attr("data-fail", fails[i]);
-    $("#buttons").append(g);
-    }
-    }
-makeButtons();
-    // use variables to concatenate the request api in a click handler, use 'this'
-        // use preventDefault();
-    // try to use only bootsrap css and write js in here
-    
+        // variables
+        let fails = ["Falls", "Walls", "Spills", "Drops", "Trips"];
+        let apiKey = "4SHnrjgqAMzgL3bxI8ggs9uxSkOuCsUX";
+        // use variables to concatenate the request api in a click handler, use 'this'
+            // use preventDefault();
+        $("#buttons").on("click", "#load", function() {
+            var fail = $(this).attr("data-fail");
+            var queryURL = "https://api.giphy.com/v1/gifs/search?q="
+            + fail
+            + "&api_key=4SHnrjgqAMzgL3bxI8ggs9uxSkOuCsUX&limit=10";
+
+            $.ajax({
+                url: queryURL,
+            }).then(function(response) {
+                console.log(response);
+                console.log(response.data);
+                // 
+                var results = response.data;
+                for ( j = 0; j < results.length; j++ ) {
+                    var failDiv = $("<div>");
+                    var r = $("<p>").text("Rating: " + results[j].rating);
+
+                    var failImage = $('<img src="'+ results[j].images.fixed_height.url + '"/>');         
+                    failDiv.append(r);
+                    failDiv.append(failImage);
+                    $('#gifDisplay').prepend(failDiv);
+                }
+            })
+        })
+
+        // function with for loop creates buttons - can call after new button is pushed to the array
+        function makeButtons() {
+            $("#buttons").empty();
+            for ( i = 0; i < fails.length; i++ ) {
+                var g = $("<button type='button' id='load' class='btn btn-outline-info'>" + fails[i] + "</button>");
+                // Adds a data-attribute "fail"
+                g.attr("data-fail", fails[i]);
+                $("#buttons").append(g);
+            }
+        }
+        makeButtons();
+        // try to use only bootsrap css and write js in here
+
     </script>
 </body>
 </html>
