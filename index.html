@@ -16,11 +16,9 @@
             border-bottom: 1px solid #5bc0de;
         }
         #gifDisplay {
-            border-right: 1px solid #5bc0de;
             padding: 15px 20px 15px 35px;
         }
         #inputColumn {
-            border-bottom: 1px solid #5bc0de;
             padding: 15px 20px;
         }
         .row {
@@ -88,8 +86,9 @@
                 for ( j = 0; j < results.length; j++ ) {
                     var failDiv = $("<div>");
                     var r = $("<p>").text("Rating: " + results[j].rating);
-
-                    var failImage = $('<img src="'+ results[j].images.fixed_height.url + '"/>');         
+                    var still = results[j].images.fixed_height_still.url;
+                    var animate = results[j].images.fixed_height.url;
+                    var failImage = $('<img src="'+ still + '"/>');         
                     failDiv.append(r, failImage).addClass('gif');
                     $('#gifDisplay').prepend(failDiv);
                 }
