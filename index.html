@@ -27,19 +27,16 @@
             flex-direction: row-reverse;
         }
         .siteName {
-            padding-right: 10px;
+            padding-left: 20px;
         }
     </style>
 </head>
 <body>
 <!-- container for buttons -->
+<span class="siteName">#failSearch</span>
 <div id="buttons"  class="container-fluid"> 
-        <span class="siteName">#failSearch</span>
-        <button type="button" class="btn btn-outline-info">Falls</button>
-        <button type="button" class="btn btn-outline-info">Walls</button>
-        <button type="button" class="btn btn-outline-info">Spills</button>
-        <button type="button" class="btn btn-outline-info">Drops</button>
-        <button type="button" class="btn btn-outline-info">Trips</button>
+        <!-- CONSTRUCTION OF GENERIC BUTTON: '<button type="button" class="btn btn-outline-info">Falls</button>' -->
+
     </div>
     <!--  container for input -->
     <div class="row">
@@ -57,10 +54,24 @@
 
 
 
-
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script type="text/javascript">
-    let apiKey = "4SHnrjgqAMzgL3bxI8ggs9uxSkOuCsUX";
     
+    // variables
+    let fails = ["Falls", "Walls", "Spills", "Drops", "Trips"];
+    let apiKey = "4SHnrjgqAMzgL3bxI8ggs9uxSkOuCsUX";
+
+    // function with for loop creates buttons - can call after new button is pushed to the array
+    function makeButtons() {
+    $("#buttons").empty();
+    for (var i = 0; i < fails.length; i++) {
+    var g = $("<button type='button' class='btn btn-outline-info'>" + fails[i] + "</button>");
+    // Adds a data-attribute "fail"
+    g.attr("data-fail", fails[i]);
+    $("#buttons").append(g);
+    }
+    }
+makeButtons();
     // use variables to concatenate the request api in a click handler, use 'this'
         // use preventDefault();
     // try to use only bootsrap css and write js in here
