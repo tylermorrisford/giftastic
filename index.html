@@ -4,13 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>geee-ooo-fffTastic</title>
+    <style>
+        #buttons {
+            padding: 15px 20px;
+            border-bottom: 1px solid rgb(42, 42, 117);
+        }
+        #gifDisplay {
+            border-right: 1px solid rgb(42, 42, 117);
+            width: 100%;
+            padding: 15px 20px;
+
+        }
+        #input {
+            border-bottom: 1px solid rgb(42, 42, 117);
+            width: 100%;
+            padding: 15px 20px;
+        }
+        .row {
+            flex-direction: row-reverse;
+        }
+    
+    </style>
 </head>
 <body>
-<!-- add full width div-container/row/column for buttons -->
-
+<!-- add full width div-container/row/column for buttons DELETE CLASS 'bg-secondary' -->
+<div id="buttons"  class="container-fluid"> 
+        <button type="button" class="btn btn-outline-info">Falls</button>
+        <button type="button" class="btn btn-outline-info">Walls</button>
+        <button type="button" class="btn btn-outline-info">Drops</button>
+        <button type="button" class="btn btn-outline-info">Trips</button>
+        <!-- <hr class="border border-danger"> -->
+    </div>
 <!-- add 2/3 width div-container/row/8column for gifs-->
+        <div class="row">
+            <div id="input" class="col-md-4 myBox2">input here!</div>
+            <div id="gifDisplay" class="col-md-8 myBox">gifs here!</div>
+        </div>
+
 <!--  add 1/3 width div-container/row/4column for input -->
 
 
