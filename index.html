@@ -8,43 +8,53 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>geee-ooo-fffTastic</title>
     <style>
+        body {
+            color: #5bc0de;
+        }
         #buttons {
             padding: 15px 20px;
-            border-bottom: 1px solid rgb(42, 42, 117);
+            border-bottom: 1px solid #5bc0de;
         }
         #gifDisplay {
-            border-right: 1px solid rgb(42, 42, 117);
-            width: 100%;
-            padding: 15px 20px;
-
+            border-right: 1px solid #5bc0de;
+            padding: 15px 20px 15px 35px;
         }
-        #input {
-            border-bottom: 1px solid rgb(42, 42, 117);
-            width: 100%;
+        #inputColumn {
+            border-bottom: 1px solid #5bc0de;
             padding: 15px 20px;
         }
         .row {
             flex-direction: row-reverse;
         }
-    
+        .siteName {
+            padding-right: 10px;
+        }
     </style>
 </head>
 <body>
-<!-- add full width div-container/row/column for buttons DELETE CLASS 'bg-secondary' -->
+<!-- container for buttons -->
 <div id="buttons"  class="container-fluid"> 
+        <span class="siteName">#failSearch</span>
         <button type="button" class="btn btn-outline-info">Falls</button>
         <button type="button" class="btn btn-outline-info">Walls</button>
+        <button type="button" class="btn btn-outline-info">Spills</button>
         <button type="button" class="btn btn-outline-info">Drops</button>
         <button type="button" class="btn btn-outline-info">Trips</button>
-        <!-- <hr class="border border-danger"> -->
     </div>
-<!-- add 2/3 width div-container/row/8column for gifs-->
-        <div class="row">
-            <div id="input" class="col-md-4 myBox2">input here!</div>
-            <div id="gifDisplay" class="col-md-8 myBox">gifs here!</div>
+    <!--  container for input -->
+    <div class="row">
+        <div id="inputColumn" class="col-md-4">
+            <div class="input-group mb-4">
+                <input type="text" id="input" class="form-control" placeholder="Add a fail" aria-label="Add a fail" aria-describedby="button-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-info" type="button" id="button-addon2">submit</button>
+                </div>
+            </div>
+        </div>
+        <!-- container for gifs -->
+            <div id="gifDisplay" class="col-md-8 myBox">Gifs Here!</div>
         </div>
 
-<!--  add 1/3 width div-container/row/4column for input -->
 
 
 
@@ -52,7 +62,7 @@
     let apiKey = "4SHnrjgqAMzgL3bxI8ggs9uxSkOuCsUX";
     
     // use variables to concatenate the request api in a click handler, use 'this'
-
+        // use preventDefault();
     // try to use only bootsrap css and write js in here
     
     </script>
