@@ -28,10 +28,16 @@
         }
         .siteName {
             padding-left: 20px;
+
         }
         .btn {
             margin-right: 10px;
         }
+        .gif {
+            display: inline-block;
+            margin: 5px;
+        }
+
     </style>
 </head>
 <body>
@@ -84,8 +90,7 @@
                     var r = $("<p>").text("Rating: " + results[j].rating);
 
                     var failImage = $('<img src="'+ results[j].images.fixed_height.url + '"/>');         
-                    failDiv.append(r);
-                    failDiv.append(failImage);
+                    failDiv.append(r, failImage).addClass('gif');
                     $('#gifDisplay').prepend(failDiv);
                 }
             })
