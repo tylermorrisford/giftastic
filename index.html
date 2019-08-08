@@ -31,7 +31,7 @@
         .btn {
             margin-right: 10px;
         }
-        .gif {
+        .block {
             display: inline-block;
             margin: 5px;
         }
@@ -89,8 +89,8 @@
                     var still = results[j].images.fixed_height_still.url;
                     var animate = results[j].images.fixed_height.url;
                     var failImage = $('<img src="'+ results[j].images.fixed_height_still.url + '" data-still="' + still + '" data-animate="' + animate + '" />');         
-                    failImage.attr("data-state", "still");
-                    failDiv.append(r, failImage).addClass("gif");
+                    failImage.attr("data-state", "still").addClass("gif");
+                    failDiv.append(r, failImage).addClass("block");
                     $('#gifDisplay').prepend(failDiv);
                 }
             })
@@ -120,7 +120,7 @@
         // try to use only bootsrap css and write js in here
         // click handler for each button with if statement to handle animation
         
-        $(".gif").on("click", function() {
+        $("#gifDisplay").on("click", ".gif", function() {
             console.log("click registered");
         var state = $(this).attr("data-state");
         var still = $(this).attr("data-still");
@@ -134,10 +134,10 @@
         
         
         if (state === "still") {
-        $(this).attr("src", $(this).attr("data-animate"));
+        $(this).attr("src", animate );
         $(this).attr("data-state", "animate");
         } else {
-        $(this).attr("src", $(this).attr("data-still"));
+        $(this).attr("src", still );
         $(this).attr("data-state", "still");
         }
         });
