@@ -66,7 +66,7 @@
     <script type="text/javascript">
 
         // variables
-        let fails = ["Falls", "Walls", "Spills", "Drops", "Trips"];
+        let fails = ["Falls", "Walls", "Spills", "Drops", "Trips", "slide", "crash"];
         let apiKey = "4SHnrjgqAMzgL3bxI8ggs9uxSkOuCsUX";
         // use variables to concatenate the request api in a click handler, use 'this'
             // use preventDefault();
@@ -88,13 +88,25 @@
                     var r = $("<p>").text("Rating: " + results[j].rating);
                     var still = results[j].images.fixed_height_still.url;
                     var animate = results[j].images.fixed_height.url;
-                    var failImage = $('<img src="'+ still + '"/>');         
+                    var failImage = $('<img src="'+ results[j].images.fixed_height_still.url + '" data-still="' + still + '" data-animate="' + animate + '" data-state="still" />');         
+                    // failImage.attr("data-state", "still");
                     failDiv.append(r, failImage).addClass('gif');
                     $('#gifDisplay').prepend(failDiv);
                 }
             })
-        })
+        });
 
+        
+        // Add function that creates new button from $("#input").val().trim()   
+        $("#button-addon2").on("click", function(event) {
+            event.preventDefault();
+            console.log("click registered");
+            var newFail = $("#input").val().trim();
+            fails.push(newFail);
+            makeButtons();
+            
+        })
+        
         // function with for loop creates buttons - can call after new button is pushed to the array
         function makeButtons() {
             $("#buttons").empty();
@@ -107,7 +119,28 @@
         }
         makeButtons();
         // try to use only bootsrap css and write js in here
-
-    </script>
+        // click handler for each button with if statement to handle animation
+        
+        $("#gifDisplay").on("click", ".gif", function() {
+            console.log("click registered");
+        var state = $(this).attr("data-state");
+        var still = $(this).attr("data-still");
+        var animate = $(this).attr("data-animate");
+        console.log("variables created");
+        console.log($(this).attr("data-state"));
+        console.log(state);
+        
+        
+        if ( state === "still") {
+        $(this).attr("src", animate);
+        $(this).attr("data-state", "animate");
+        }
+        else {
+        $(this).attr("src", still);
+        $(this).attr("data-state", "still");
+        }
+        });
+        
+        </script>
 </body>
 </html>
