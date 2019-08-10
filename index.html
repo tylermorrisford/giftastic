@@ -144,12 +144,24 @@
         
         </script>
 <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="/__/firebase/6.3.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
 
 <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#reserved-urls -->
+     https://firebase.google.com/docs/web/setup#config-web-app -->
 
-<!-- Initialize Firebase -->
-<script src="/__/firebase/init.js"></script>
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyBHIFd4tM5nkC08SVQRpAknh0ost61mMWk",
+    authDomain: "demo2019-703f7.firebaseapp.com",
+    databaseURL: "https://demo2019-703f7.firebaseio.com",
+    projectId: "demo2019-703f7",
+    storageBucket: "",
+    messagingSenderId: "270068027373",
+    appId: "1:270068027373:web:177f379ff36cd594"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
 </body>
 </html>
