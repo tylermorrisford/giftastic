@@ -83,31 +83,15 @@
   firebase.initializeApp(firebaseConfig);
 
   var database = firebase.database();
-    var clickCounter = 0;
-
-    // FUNCTIONS + EVENTS
-    // --------------------------------------------------------------------------------
-
-    $("#click-button").on("click", function() {
-      clickCounter++;
-
-      database.ref().set({
-        clickCount: clickCounter
-      });
-    });
-
-    // MAIN PROCESS + INITIAL CODE
-    // --------------------------------------------------------------------------------
 
     database.ref().on("value", function(snapshot) {
-      console.log(snapshot.val());
-
-      clickCounter = snapshot.val().clickCount;
-
-      $("#click-value").text(snapshot.val().clickCount);
-    }, function(errorObject) {
-      console.log("The read failed: " + errorObject.code);
-    });
+    console.log(snapshot);
+    console.log(snapshot.val().word);
+    latestWord = snapshot.val().word;
+    $("#latest-word").text(latestWord);
+// Then include Firebase error logging
+// HINT: }, function(errorObject)
+})
     </script>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -152,13 +136,19 @@
             var newFail = $("#input").val().trim();
             fails.push(newFail);
             makeButtons();
-            var num = 0;
-            var word = "word" + num++;
             database.ref().set({
             word: newFail
             })
         })
         
+        // firebase 'value' function that creates snapshot, used to populate 'latest-word' span
+        database.ref().on("value", function(snapshot) {
+        console.log(snapshot);
+        console.log(snapshot.val().word);
+        latestWord = snapshot.val().word;
+        $("#latest-word").text(latestWord);
+        })
+
         // function with for loop creates buttons - can call after new button is pushed to the array
         function makeButtons() {
             $("#buttons").empty();
@@ -170,21 +160,13 @@
             }
         }
         makeButtons();
+
         // click handler for each button with if statement to handle animation
-        
         $("#gifDisplay").on("click", ".gif", function() {
-            console.log("click registered");
         var state = $(this).attr("data-state");
         var still = $(this).attr("data-still");
         var animate = $(this).attr("data-animate");
-        // data state returns undefined at first 
-        console.log("variables created");
-        console.log($(this).attr("data-state"));
-        console.log(state);
-        console.log(animate);
-        console.log(still);
-        
-        
+        // if statement handles changing source url and 'data-state' attribute
         if (state === "still") {
         $(this).attr("src", animate );
         $(this).attr("data-state", "animate");
