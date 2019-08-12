@@ -26,4 +26,4 @@ Click a 'category' button to load the screen with 10 gifs and their 'rating'. If
 
  
 # User Feedback
-two test users who have seen my previous coursework where given the app; their feedback can be summarized as, "cool, but... how do I play it?"
+As referenced above, someone entered 'infomercial' into this app at some point a few moments after I added firebase, and it was an amazing suggestion.
