@@ -54,10 +54,10 @@
                     <button class="btn btn-outline-info" type="button" id="button-addon2">submit</button>
                 </div>
             </div>
+            <div><p>The last keyword entered by a user: <span id="latest-word"></span></p></div>
         </div>
         <!-- container for gifs -->
             <div id="gifDisplay" class="col-md-8 myBox">Gifs Here!</div><br>
-            <button id="#click-button">click</button>
         </div>
 
 
@@ -115,7 +115,7 @@
     <script type="text/javascript">
 
         // variables
-        let fails = ["Falls", "Walls", "Spills", "Drops", "Trips", "slide", "crash"];
+        let fails = ["Falls", "Walls", "Spills", "Drops", "Trips", "slide", "crash", "jumps", "throws"];
         let apiKey = "4SHnrjgqAMzgL3bxI8ggs9uxSkOuCsUX";
         // use variables to concatenate the request api in a click handler, use 'this'
             // use preventDefault();
@@ -152,7 +152,11 @@
             var newFail = $("#input").val().trim();
             fails.push(newFail);
             makeButtons();
-            
+            var num = 0;
+            var word = "word" + num++;
+            database.ref().set({
+            word: newFail
+            })
         })
         
         // function with for loop creates buttons - can call after new button is pushed to the array
@@ -166,7 +170,6 @@
             }
         }
         makeButtons();
-        // try to use only bootsrap css and write js in here
         // click handler for each button with if statement to handle animation
         
         $("#gifDisplay").on("click", ".gif", function() {
