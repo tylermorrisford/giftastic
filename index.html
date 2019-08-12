@@ -56,10 +56,59 @@
             </div>
         </div>
         <!-- container for gifs -->
-            <div id="gifDisplay" class="col-md-8 myBox">Gifs Here!</div>
+            <div id="gifDisplay" class="col-md-8 myBox">Gifs Here!</div><br>
+            <button id="#click-button">click</button>
         </div>
 
 
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js">
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-database.js"></script>
+
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyBHIFd4tM5nkC08SVQRpAknh0ost61mMWk",
+    authDomain: "demo2019-703f7.firebaseapp.com",
+    databaseURL: "https://demo2019-703f7.firebaseio.com",
+    projectId: "demo2019-703f7",
+    storageBucket: "",
+    messagingSenderId: "270068027373",
+    appId: "1:270068027373:web:177f379ff36cd594"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  var database = firebase.database();
+    var clickCounter = 0;
+
+    // FUNCTIONS + EVENTS
+    // --------------------------------------------------------------------------------
+
+    $("#click-button").on("click", function() {
+      clickCounter++;
+
+      database.ref().set({
+        clickCount: clickCounter
+      });
+    });
+
+    // MAIN PROCESS + INITIAL CODE
+    // --------------------------------------------------------------------------------
+
+    database.ref().on("value", function(snapshot) {
+      console.log(snapshot.val());
+
+      clickCounter = snapshot.val().clickCount;
+
+      $("#click-value").text(snapshot.val().clickCount);
+    }, function(errorObject) {
+      console.log("The read failed: " + errorObject.code);
+    });
+    </script>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -143,25 +192,6 @@
         });
         
         </script>
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#config-web-app -->
-
-<script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyBHIFd4tM5nkC08SVQRpAknh0ost61mMWk",
-    authDomain: "demo2019-703f7.firebaseapp.com",
-    databaseURL: "https://demo2019-703f7.firebaseio.com",
-    projectId: "demo2019-703f7",
-    storageBucket: "",
-    messagingSenderId: "270068027373",
-    appId: "1:270068027373:web:177f379ff36cd594"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-</script>
 </body>
 </html>
