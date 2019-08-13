@@ -85,12 +85,8 @@
   var database = firebase.database();
 
     database.ref().on("value", function(snapshot) {
-    console.log(snapshot);
-    console.log(snapshot.val().word);
     latestWord = snapshot.val().word;
     $("#latest-word").text(latestWord);
-// Then include Firebase error logging
-// HINT: }, function(errorObject)
 })
     </script>
 
@@ -101,7 +97,7 @@
         // variables
         let fails = ["Falls", "Walls", "Spills", "Drops", "Trips", "slide", "crash", "jumps", "throws", "infomercial"];
         let apiKey = "4SHnrjgqAMzgL3bxI8ggs9uxSkOuCsUX";
-        // use variables to concatenate the request api in a click handler, use 'this'
+        // use variables to concatenate the request api in a click handler
             // use preventDefault();
         $("#buttons").on("click", "#load", function() {
             var fail = $(this).attr("data-fail");
@@ -112,9 +108,7 @@
             $.ajax({
                 url: queryURL,
             }).then(function(response) {
-                console.log(response);
-                console.log(response.data);
-                // 
+
                 var results = response.data;
                 for ( j = 0; j < results.length; j++ ) {
                     var failDiv = $("<div>");
