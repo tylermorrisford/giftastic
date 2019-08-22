@@ -1,0 +1,27 @@
+body {
+    color: #5bc0de;
+}
+#buttons {
+    padding: 15px 20px;
+    border-bottom: 1px solid #5bc0de;
+}
+#gifDisplay {
+    padding: 15px 20px 15px 35px;
+}
+#inputColumn {
+    padding: 15px 20px;
+}
+.row {
+    flex-direction: row-reverse;
+}
+.siteName {
+    padding-left: 20px;
+
+}
+.btn {
+    margin-right: 10px;
+}
+.block {
+    display: inline-block;
+    margin: 5px;
+}

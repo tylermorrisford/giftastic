@@ -1,5 +1,5 @@
 ## #failSearch
-This app is a simple API search that uses buttons and user input to update the giphy api query url, resulting in different gifs being (and their 'ratings') displayed on the screen.
+This app is a simple API search that uses buttons and user input to update a giphy api query url, resulting in different gifs (and their 'ratings') being displayed on the screen.
 
 ## Index
 1. How it works

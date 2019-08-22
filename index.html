@@ -6,43 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/style.css">
     <title>geee-ooo-fffTastic</title>
-    <style>
-        body {
-            color: #5bc0de;
-        }
-        #buttons {
-            padding: 15px 20px;
-            border-bottom: 1px solid #5bc0de;
-        }
-        #gifDisplay {
-            padding: 15px 20px 15px 35px;
-        }
-        #inputColumn {
-            padding: 15px 20px;
-        }
-        .row {
-            flex-direction: row-reverse;
-        }
-        .siteName {
-            padding-left: 20px;
-
-        }
-        .btn {
-            margin-right: 10px;
-        }
-        .block {
-            display: inline-block;
-            margin: 5px;
-        }
-
-    </style>
 </head>
 <body>
 <!-- container for buttons -->
 <span class="siteName">#failSearch</span>
 <div id="buttons"  class="container-fluid"> 
-        <!-- CONSTRUCTION OF GENERIC BUTTON: '<button type="button" class="btn btn-outline-info">Falls</button>' -->
 
     </div>
     <!--  container for input -->
@@ -98,7 +68,6 @@
         let fails = ["Falls", "Walls", "Spills", "Drops", "Trips", "slide", "crash", "jumps", "throws", "infomercial"];
         let apiKey = "4SHnrjgqAMzgL3bxI8ggs9uxSkOuCsUX";
         // use variables to concatenate the request api in a click handler
-            // use preventDefault();
         $("#buttons").on("click", "#load", function() {
             var fail = $(this).attr("data-fail");
             var queryURL = "https://api.giphy.com/v1/gifs/search?q="
