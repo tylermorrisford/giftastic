@@ -8,7 +8,7 @@ This app is a simple API search that uses buttons and user input to update a gip
 4. User Feedback
 
 # How it works
-A click event targets dynamically generated buttons and generates a new api query. When the user enters a new 'fail' keyword (ex. 'jumps') that word is pushed into an array, the 'buttons' div content is deleted, and buttons are dynamically created from items in the array.
+A click event targets dynamically generated buttons and generates a new api query. When the user enters a new 'fail' keyword (ex. 'jumps') that word is pushed into an array, the 'buttons' div content is deleted, and buttons are dynamically re-created from items in the array.
 
 The api request grabs both still and animated image urls and toggles to the animated url when the image is clicked, using a 'data-state' attribute to track which state each image is currently in. When the category button (top) is clicked, the ten gifs are loaded using the still url, which results in a slightly faster load time. When the users clicks on a gif, a click event changes the data-state and source url for the image, resulting in a moving image. When the user clicks again, the data-state and source url are changed back to still.
 
