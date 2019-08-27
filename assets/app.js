@@ -26,7 +26,7 @@ $("#buttons").on("click", "#load", function() {
     var fail = $(this).attr("data-fail");
     var queryURL = "https://api.giphy.com/v1/gifs/search?q="
     + fail
-    + "&api_key=4SHnrjgqAMzgL3bxI8ggs9uxSkOuCsUX&limit=10";
+    + "&api_key=4SHnrjgqAMzgL3bxI8ggs9uxSkOuCsUX&limit=10&offset=2";
 
     $.ajax({
         url: queryURL,
@@ -51,11 +51,15 @@ $("#buttons").on("click", "#load", function() {
 $("#button-addon2").on("click", function(event) {
     event.preventDefault();
     var newFail = $("#input").val().trim();
+    if (fails.includes(newFail) || newFail === "" ) {
+        console.log("That #fail has been rejected by the #failSearch team because it is either a duplicate or blank")
+    } else {
     fails.push(newFail);
     makeButtons();
     database.ref().set({
     word: newFail
     })
+}
 })
 
 // firebase 'value' function that creates snapshot, used to populate 'latest-word' span
